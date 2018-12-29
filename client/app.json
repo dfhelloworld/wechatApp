@@ -3,11 +3,11 @@
     "pages/index/index"
   ],
   "window":{
-    "backgroundColor":"#F6F6F6",
+    "backgroundColor":"#82B9A9",
     "backgroundTextStyle":"light",
-    "navigationBarBackgroundColor": "#F6F6F6",
+    "navigationBarBackgroundColor": "#82B9A9",
     "navigationBarTitleText": "天气点点查",
-    "navigationBarTextStyle":"black"
+    "navigationBarTextStyle":"white"
   },
   "permission": {
     "scope.userLocation": {

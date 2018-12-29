@@ -1,14 +1,18 @@
 /**index.wxss**/
-page {
-    background: #F6F6F6;
+page { 
+    background: linear-gradient(to bottom, #82B9A9, #94b18f); 
     display: flex;
     flex-direction: column;
-    justify-content: flex-start;
+    justify-content: space-around; 
+  color: #fafbf7;
+} 
+.location{
+  font-size:2rem; 
+  margin-left: 0.5rem;
 }
-.searchInput{
-    border:1px solid #aaa;
+.location span{
+  margin-left:0.5rem; 
 }
-
 .userinfo, .uploader, .tunnel {
     margin-top: 40rpx;
     height: 140rpx;

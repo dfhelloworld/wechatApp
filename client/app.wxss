@@ -1,3 +1,6 @@
+
+@import 'weui.wxss';
+@import 'fontAwesome.wxss';
 /**app.wxss**/
 .container {
   display: flex;
@@ -5,3 +8,4 @@
   align-items: center;
   box-sizing: border-box;
 } 
+
