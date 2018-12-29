@@ -1,11 +1,13 @@
- 
-  <view class='location'>
-   <i class='fa fa-map-marker'></i>
-   <span>{{currentCity||"--"}}</span>
-  </view> 
-<view class="container"> 
-    <view class="searchInput">
-        <input placeholder="请输入要搜索的城市名称" confirm-type='search' auto-focus bindinput='cityInput' value="{{inputValue}}"></input>
-    </view>
-    <button bindtap="bindButtonTap">确认</button>
-</view> 
+<view class='location'>
+  <i class='fa fa-map-marker'></i>
+  <span>{{currentCity||"--"}}</span>
+</view>
+<view class="container">
+  <view class="image-container">
+    <image class="main-weather-icon" src='{{mainImageSrc}}'></image>
+  </view>
+  <span>{{todayWeather.cond_txt_d}}</span>
+  <view style='font-size:2rem'>
+    {{todayWeather.tmp_min}} ~ {{todayWeather.tmp_max}}℃
+  </view>
+</view>
