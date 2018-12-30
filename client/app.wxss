@@ -7,5 +7,31 @@
   flex-direction: column;
   align-items: center;
   box-sizing: border-box;
+  margin-top:40rpx;
 } 
-
+.row-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  box-sizing: border-box;
+  justify-content: space-around;
+  margin-top:6rem;
+  font-size: 1.3rem;
+} 
+sup{
+     font-size: 1.2rem;
+     vertical-align:text-top;
+}
+sub{
+     font-size: 1.2rem;
+     vertical-align:text-bottom;
+}
+strong{
+  font-size: 1.5rem;
+}
+stronger{
+  font-size: 2rem;
+}
+small{
+  font-size: 0.5rem;
+}

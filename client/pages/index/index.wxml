@@ -1,13 +1,48 @@
+<!-- 定位信息及今日日期 -->
 <view class='location'>
   <i class='fa fa-map-marker'></i>
   <span>{{currentCity||"--"}}</span>
+  <view class='date'>
+    <sup>{{day||"--"}}</sup> /
+    <sub>{{month||"--"}}</sub>
+  </view>
 </view>
+<!-- 今日天气信息 -->
 <view class="container">
   <view class="image-container">
     <image class="main-weather-icon" src='{{mainImageSrc}}'></image>
   </view>
-  <span>{{todayWeather.cond_txt_d}}</span>
-  <view style='font-size:2rem'>
-    {{todayWeather.tmp_min}} ~ {{todayWeather.tmp_max}}℃
+  <span>
+    <strong>{{todayWeather.cond_txt_d}}</strong>
+  </span>
+  <view>
+    <stronger>{{todayWeather.tmp_min}} ~ {{todayWeather.tmp_max}}℃</stronger>
+  </view>
+  <view>
+    <strong>空气质量：{{weatherQuanlity}}</strong>
+    <strong style="border-radius:0.2rem;font-size:1.2rem;margin-left:10rpx;background-color:{{weatherConditionColor}}">{{weatherCondition}}</strong>
+  </view>
+</view>
+<!-- 明后2天预报 -->
+<view class='row-container'>
+  <view class='container'>
+  <view>明天</view>
+    <view class="image-container">
+      <image class="weather-icon" src='{{secondImageSrc}}'></image>
+    </view>
+    <span>{{tommorrowWeather.cond_txt_d}}</span>
+    <view>
+      {{tommorrowWeather.tmp_min}} ~ {{tommorrowWeather.tmp_max}}℃
+    </view>
+  </view>
+  <view class='container'>
+  <view>后天</view>
+    <view class="image-container">
+      <image class="weather-icon" src='{{thirdImageSrc}}'></image>
+    </view>
+    <span>{{dayAfterWeather.cond_txt_d}}</span>
+    <view>
+      {{dayAfterWeather.tmp_min}} ~ {{dayAfterWeather.tmp_max}}℃
+    </view>
   </view>
 </view>

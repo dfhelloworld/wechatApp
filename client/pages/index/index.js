@@ -11,7 +11,8 @@ Page({
     todayWeather: {},
     mainImageSrc: "",
     secondImageSrc: "",
-    thirdImageSrc: ""
+    thirdImageSrc: "",
+    weatherQuanlity: ""
   },
   //初始化数据
   onLoad: function() {
@@ -23,13 +24,14 @@ Page({
       } else {
         throw '无法获取地理位置'
       }
-    }).then(res => {
-
+    }).then(res => { 
       if (res.data.HeWeather6.length) {
         this.weatherInfo = res.data.HeWeather6[0].daily_forecast;
         this.todayWeather = this.weatherInfo[0];
         this.setData({
           todayWeather: this.weatherInfo[0],
+          day: this.weatherInfo[0].date.split("-")[2],
+          month: this.weatherInfo[0].date.split("-")[1],
           tommorrowWeather: this.weatherInfo[1],
           dayAfterWeather: this.weatherInfo[2],
           mainImageSrc: `../../weather-icon/${this.todayWeather.cond_code_d}.png`,
@@ -40,6 +42,14 @@ Page({
       }
       this.setData({
         currentCity: res.data.HeWeather6[0].basic.parent_city
+      })
+      return this.getWeatherQuanlity(res.data.HeWeather6[0].basic.parent_city)
+    }).then(res=>{
+      console.log(res);
+      this.setData({
+        weatherQuanlity:res.data.HeWeather6[0].air_now_city.aqi,
+        weatherCondition: res.data.HeWeather6[0].air_now_city.qlty,
+        weatherConditionColor:this.getWeatherConditionColor(res.data.HeWeather6[0].air_now_city.qlty)
       })
     }).catch(err => {
       console.log(err);
@@ -70,4 +80,37 @@ Page({
       })
     })
   },
+  getWeatherQuanlity:function(city){
+    let url = encodeURI(`https://free-api.heweather.net/s6/air/now?location=${city}&key=2be22d4891af4199aaff57f82a9eec9a`);
+    return new Promise((resolve,reject)=>{
+      wx.request({
+        url: url,
+        success:resolve,
+        fail:reject
+      })
+    })
+  },
+  //获取天气状况对应颜色
+  getWeatherConditionColor:function(condition){
+    switch(condition){
+      case "优":
+        return "#339900";
+      break;
+      case "良":
+        return "#99CC66";
+        break;
+      case "轻度污染":
+        return "#FFFF99";
+        break;
+      case "中度污染":
+        return "#FF9966";
+        break;
+      case "重度污染":
+        return "#FF0000";
+        break;
+      case "严重污染":
+        return "#990033";
+        break;
+    }
+  }
 })
